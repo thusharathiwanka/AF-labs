@@ -69,7 +69,7 @@ db.lab_3.updateOne({"name": "Smith", "isActive": true},{$push: {"subjects": "Dis
 db.lab_3.updateOne({"name": "John"},{$push: {"isActive": false}})
 ```
 
-# Delete one document
+## Delete one document
 
 ```
 db.lab_3.deleteOne({"name": "John"})
