@@ -5,7 +5,7 @@ console.log("Hello World");
 const os = require("os");
 
 console.log(`Architecture ${os.arch}`);
-console.log(`CPUs ${os.cpus().length}`);
+console.log(`CPUs ${os.cpus()}`);
 console.log(`OS ${os.platform}`);
 
 // 3
@@ -31,21 +31,32 @@ const outFileName = `${__dirname}/test-copy.txt`; // destination file path
 const readStream = fs.createReadStream(fileName);
 const writeStream = fs.createWriteStream(outFileName);
 
-readStream.pipe(writeStream);
+// writing and reading using pipe
+// readStream.pipe(writeStream);
+
+// writing using write
+writeStream.write("Node js is awesome");
+writeStream.close();
+writeStream.on("close", () => {
+  console.log("File writing is completed");
+});
 
 // listening to data event and logs output
 readStream.on("data", (data) => console.log(data.toString()));
+readStream.close();
+// listing to close event
+readStream.on("close", () => console.log("File reading is completed"));
 
 // 5
 const http = require("http");
 
-http
-  .createServer((request, response) => {
-    response.setHeader("Content-Type", "text/html");
-    response.write("<h1>Hello World</h1>");
-    response.end();
-  })
-  .listen(3000);
+// http
+//   .createServer((request, response) => {
+//     response.setHeader("Content-Type", "text/html");
+//     response.write("<h1>Hello World</h1>");
+//     response.end();
+//   })
+//   .listen(3000);
 
 http
   .createServer((request, response) => {
@@ -61,6 +72,13 @@ http
           response.end();
         });
         break;
+      case "PUT":
+        response.on("data", (data) => {
+          return `Put request received with ${data}`;
+        });
+        response.on("error", (error) => {
+          return `Put request failed with ${data}`;
+        });
     }
   })
   .listen(3000, (error) => console.log("Server is listening to port 3000"));
