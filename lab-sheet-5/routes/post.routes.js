@@ -11,6 +11,7 @@ router.get("/", (ctx) => {
 
 router.post("/", (ctx) => {
   let post = ctx.request.body;
+  console.log(post);
   post = createPost(post);
   ctx.response.status = 201;
   ctx.body = post;

@@ -3,7 +3,9 @@ const uuid = require("uuid");
 let posts = new Map();
 
 let createPost = (obj) => {
-  console.log(obj);
+  obj.name = "Post Name";
+  obj.description = "Post Description";
+
   let post = {
     id: uuid.v4(),
     name: obj.name,
@@ -16,7 +18,7 @@ let createPost = (obj) => {
 };
 
 let getPosts = () => {
-  return [...posts.values];
+  return [...posts.values()];
 };
 
 let getPost = (id) => {
