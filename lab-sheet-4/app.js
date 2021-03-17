@@ -47,16 +47,16 @@ readStream.close();
 // listing to close event
 readStream.on("close", () => console.log("File reading is completed"));
 
-// 5
+5;
 const http = require("http");
 
-http
-  .createServer((request, response) => {
-    response.setHeader("Content-Type", "text/html");
-    response.write("<h1>Hello World</h1>");
-    response.end();
-  })
-  .listen(3000);
+// http
+//   .createServer((request, response) => {
+//     response.setHeader("Content-Type", "text/html");
+//     response.write("<h1>Hello World</h1>");
+//     response.end();
+//   })
+//   .listen(3000);
 
 http
   .createServer((request, response) => {

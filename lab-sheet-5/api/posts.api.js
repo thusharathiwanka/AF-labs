@@ -3,9 +3,6 @@ const uuid = require("uuid");
 let posts = new Map();
 
 let createPost = (obj) => {
-  obj.name = "Post Name";
-  obj.description = "Post Description";
-
   let post = {
     id: uuid.v4(),
     name: obj.name,
