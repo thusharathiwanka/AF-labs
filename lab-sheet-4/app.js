@@ -47,7 +47,7 @@ readStream.close();
 // listing to close event
 readStream.on("close", () => console.log("File reading is completed"));
 
-5;
+// 5
 const http = require("http");
 
 http
