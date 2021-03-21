@@ -16,9 +16,9 @@ const fileName = `${__dirname}/test.txt`; // source file path
 fs.readFile(fileName, (error, data) => {
   if (error) {
     console.log(error);
+  } else {
+    console.log(data.toString()); // without toString() this logs a buffer
   }
-
-  console.log(data.toString()); // without toString() this logs a buffer
 });
 
 // synchronous reading
@@ -32,7 +32,7 @@ const readStream = fs.createReadStream(fileName);
 const writeStream = fs.createWriteStream(outFileName);
 
 // writing and reading using pipe
-// readStream.pipe(writeStream);
+readStream.pipe(writeStream);
 
 // writing using write
 writeStream.write("Node js is awesome");
