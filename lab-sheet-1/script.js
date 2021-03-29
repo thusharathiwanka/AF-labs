@@ -29,7 +29,7 @@ const user = {
 console.log(user.getName());
 
 // 3
-window.vehicleName = "Car";
+window.vehicleName = "Car"; // Also, var can be used
 
 const printVehicleName = function () {
   console.log(this.vehicleName);
