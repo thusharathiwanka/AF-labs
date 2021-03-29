@@ -89,6 +89,8 @@ const returnValue = () => {
 
 // 5
 class Vehicle {
+  static VehicleCount = 0;
+
   constructor(type) {
     // let type = something - this is private
     // below are public
