@@ -44,8 +44,8 @@ writeStream.on("close", () => {
 // listening to data event and logs output
 readStream.on("data", (data) => console.log(data.toString()));
 readStream.close();
-// listing to close event
-readStream.on("close", () => console.log("File reading is completed"));
+// listing to end event
+readStream.on("end", () => console.log("File reading is completed"));
 
 // 5
 const http = require("http");
