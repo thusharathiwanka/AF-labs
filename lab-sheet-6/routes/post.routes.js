@@ -14,6 +14,7 @@ const router = new Router({
 
 router.get("/", async (ctx) => {
   ctx.body = await getPosts();
+  ctx.response.status = 200;
 });
 
 router.post("/", async (ctx) => {
@@ -26,6 +27,7 @@ router.post("/", async (ctx) => {
 router.get("/:id", async (ctx) => {
   const id = ctx.params.id;
   ctx.body = await getPost(id);
+  ctx.response.status = 200;
 });
 
 router.put("/:id", async (ctx) => {
