@@ -1,8 +1,8 @@
-package com.sprinbootlab09.aflab9.controller;
+package com.sprinbootlab09.aflab10.controller;
 
-import com.sprinbootlab09.aflab9.api.PostApi;
-import com.sprinbootlab09.aflab9.domain.Post;
-import com.sprinbootlab09.aflab9.dto.PostDto;
+import com.sprinbootlab09.aflab10.api.PostApi;
+import com.sprinbootlab09.aflab10.domain.Post;
+import com.sprinbootlab09.aflab10.dto.PostDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -40,10 +40,13 @@ public class PostEndpoint {
     }
 
     @PutMapping("/{id}")
-    public Post updatePost(@PathVariable String id, PostDto postDto) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public Post updatePost(@PathVariable String id, @RequestBody PostDto postDto) {
         Post post = new Post();
+        post.setId(id);
         post.setName(postDto.getName());
         post.setDescription(postDto.getDescription());
-        return api.updatePost(id, post);
+        System.out.println(post.getId() + post.getName() + post.getDescription());
+        return api.updatePost(post);
     }
 }
