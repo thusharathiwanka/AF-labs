@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  app:
+    image: sample-rest-service
+    ports:
+      - 3000:3000
+    working_dir: /app
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 300M
